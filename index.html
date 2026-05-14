@@ -1,81 +1,111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Word Warriors</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- START SCREEN -->
   <div id="start-screen">
-    <img src="assets/title.png" id="title">
 
-    <img src="assets/play.png" id="playBtn">
-    <img src="assets/how.png" id="howBtn">
+    <img src="assets/UI/play.png" id="playBtn">
+    <img src="assets/UI/how.png" id="howBtn">
 
   </div>
 
-  <!-- HOW TO PLAY SCREEN -->
+
+  <!-- HOW TO PLAY -->
+
   <div id="how-screen" style="display:none;">
-    <h2>How to Play</h2>
-    <h3>Definitions</h3>
-    <p>Connotation: Connotation </p>
-    <p>Denotation: </p>
-    <p>Answer questions to defeat enemies.</p>
-    <p>Correct = damage enemy. Wrong = you take damage.</p>
 
-    <img src="assets/back.png" id = "backBtn">
+    <h2>HOW TO PLAY</h2>
+
+    <p>Analyze media language.</p>
+    <p>Detect bias and implications.</p>
+    <p>Correct answers damage enemies.</p>
+    <p>Wrong answers damage you.</p>
+
+    <img src="assets/UI/back.png" id="backBtn">
+
   </div>
+
+
+  <!-- CHARACTER SCREEN -->
+
+  <div id="character-screen" style="display:none;">
+
+    <h1>CHOOSE YOUR WARRIOR</h1>
+
+    <div id="characters">
+
+      <div class="character" data-char="Woodcutter">
+        <img src="assets/characters/1 Woodcutter/Woodcutter.png">
+        <p>Bob</p>
+      </div>
+
+      <div class="character" data-char="GraveRobber">
+        <img src="assets/characters/2 GraveRobber/GraveRobber.png">
+        <p>Bob 2</p>
+      </div>
+
+      <div class="character" data-char="SteamMan">
+        <img src="assets/characters/3 SteamMan/SteamMan.png">
+        <p>Bob 3</p>
+      </div>
+
+    </div>
+
+    <img src="assets/UI/confirm.png" id="confirm">
+    <img src="assets/UI/back.png" id="backBtn2">
+
+  </div>
+
+
 
   <!-- GAME SCREEN -->
+
   <div id="game" style="display:none;">
 
-    <h2>Battle</h2>
+    <h2 id="enemyName">Fearmonger</h2>
 
-    <p id="question">Question appears here</p>
+    <p id="quote"></p>
 
-    <button onclick="answer('A')">A</button>
-    <button onclick="answer('B')">B</button>
-    <button onclick="answer('C')">C</button>
+    <p id="question"></p>
+
+    <div id="answers">
+
+      <button id="btnA" onclick="answer(0)"></button>
+
+      <button id="btnB" onclick="answer(1)"></button>
+
+      <button id="btnC" onclick="answer(2)"></button>
+
+    </div>
 
     <p id="result"></p>
 
-    <p>Player HP: <span id="playerHP">100</span></p>
-    <p>Enemy HP: <span id="enemyHP">100</span></p>
+    <p>
+      Player HP:
+      <span id="playerHP">100</span>
+    </p>
 
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  </div>
-  <div id="character-screen" style="display:none;">
-
-  <h1>CHOOSE YOUR WARRIOR</h1>
-
-  <div id="characters">
-
-
-    <div class="character" data-char="bob">
-      <img src="assets/characters/1 Woodcutter/Woodcutter.png">
-      <p>Bob</p>
-    </div>
-
-    <div class="character" data-char="bob2">
-      <img src="assets/characters/2 GraveRobber/GraveRobber.png">
-      <p>Bob 2</p>
-    </div>
-
-    <div class="character" data-char="bob3">
-      <img src="assets/characters/3 SteamMan/SteamMan.png">
-      <p>Bob 3</p>
-    </div>
+    <p>
+      Enemy HP:
+      <span id="enemyHP">100</span>
+    </p>
 
   </div>
 
-  <button id="confirmBtn">CONFIRM</button>
-      <img src="assets/back.png" id = "backBtn2">
 
-</div>
-
+  <script src="questions.js"></script>
   <script src="game.js"></script>
+
 </body>
+
 </html>

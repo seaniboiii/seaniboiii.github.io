@@ -1,0 +1,112 @@
+START PROGRAM
+
+DECLARE playerHP = 100
+DECLARE enemyHP = 100
+
+DECLARE selectedCharacter = null
+DECLARE currentQuestionIndex = 0
+
+CREATE ARRAY questions
+    questions[0] = ("What is the connotation of 'stubborn'?", "B")
+    questions[1] = ("What is the connotation of 'slim'?", "A")
+
+DECLARE currentScreen = "START"
+
+
+FUNCTION main()
+    CALL showStartScreen()
+END FUNCTION
+
+FUNCTION showStartScreen()
+    SET currentScreen = "START"
+    DISPLAY "Play Button"
+    DISPLAY "How To Play Button"
+END FUNCTION
+
+FUNCTION showHowScreen()
+    SET currentScreen = "HOW"
+    DISPLAY instructions
+    DISPLAY "Back Button"
+END FUNCTION
+
+FUNCTION showCharacterScreen()
+    SET currentScreen = "CHARACTER"
+    DISPLAY 3 characters
+    DISPLAY "Confirm Button"
+    DISPLAY "Back Button"
+END FUNCTION
+
+FUNCTION showGameScreen()
+    SET currentScreen = "GAME"
+    CALL loadQuestion()
+    DISPLAY HP
+END FUNCTION
+
+WHEN PlayButton CLICKED
+    CALL showCharacterScreen()
+END WHEN
+
+WHEN HowButton CLICKED
+    CALL showHowScreen()
+END WHEN
+
+WHEN BackButton CLICKED
+    CALL showStartScreen()
+END WHEN
+
+
+WHEN Character CLICKED (characterID)
+    SET selectedCharacter = characterID
+    HIGHLIGHT selected character
+END WHEN
+
+WHEN ConfirmButton CLICKED
+    IF selectedCharacter IS null THEN
+        DISPLAY "Pick a character first"
+    ELSE
+        CALL showGameScreen()
+    END IF
+END WHEN
+
+
+FUNCTION loadQuestion()
+    DISPLAY questions[currentQuestionIndex].text
+END FUNCTION
+
+
+WHEN AnswerButton CLICKED (choice)
+
+    IF choice == questions[currentQuestionIndex].correct THEN
+        SUBTRACT 25 FROM enemyHP
+        DISPLAY "Correct!"
+    ELSE
+        SUBTRACT 20 FROM playerHP
+        DISPLAY "Wrong!"
+    END IF
+
+    CALL updateHP()
+
+    INCREMENT currentQuestionIndex
+
+    IF enemyHP <= 0 THEN
+        DISPLAY "You win!"
+        CALL showStartScreen()
+
+    ELSE IF playerHP <= 0 THEN
+        DISPLAY "Game Over!"
+        CALL showStartScreen()
+
+    ELSE
+        CALL loadQuestion()
+    END IF
+
+END WHEN
+
+
+FUNCTION updateHP()
+    DISPLAY playerHP
+    DISPLAY enemyHP
+END FUNCTION
+
+
+END PROGRAM
