@@ -11,37 +11,34 @@ const questions = [
             "Which word creates the strongest negative bias?",
 
         choices: [
+
             "downtown",
+
             "terrorize",
+
             "protest"
+
         ],
 
         correct: 1,
 
         explanation:
-            "'Terrorize' creates fear and exaggerates the situation."
+            "'Terrorize' creates fear."
 
     },
 
+
     {
-        enemy: "Labeler",
+
+        enemy: "Fearmonger",
 
         quote:
-            "Illegal immigrants flood the city.",
+            "Thugs terrorize downtown after protest.",
 
         text:
-            "What effect does the word 'flood' create?",
+            "Rewrite this headline so it is more neutral.",
 
-        choices: [
-            "peaceful movement",
-            "dangerous overwhelming force",
-            "neutral description"
-        ],
-
-        correct: 1,
-
-        explanation:
-            "'Flood' suggests danger and loss of control."
+        type: "written"
 
     }
 

@@ -20,7 +20,9 @@ body {
 }
 
 
-#start-screen, #how-screen, #character-screen {
+#start-screen,
+#how-screen,
+#character-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,20 +31,28 @@ body {
 }
 
 
-#playBtn, #howBtn {
+#playBtn,
+#howBtn {
   width: 500px;
   cursor: pointer;
 }
 
 
-#backBtn, #backBtn2, #confirm {
+#backBtn,
+#backBtn2,
+#confirm {
   width: 200px;
   cursor: pointer;
   margin: 15px
 }
 
 
-#playBtn:hover, #howBtn:hover, #backBtn:hover, #backBtn2:hover, #confirm:hover, .character:hover {
+#playBtn:hover,
+#howBtn:hover,
+#backBtn:hover,
+#backBtn2:hover,
+#confirm:hover,
+.character:hover {
   transform: scale(1.05);
 }
 
@@ -81,6 +91,35 @@ body {
 .selected {
 
   border: 3px solid yellow;
+
+}
+
+/* Written answer stuff */
+
+#textAnswer,
+#submitText {
+
+  display: none;
+
+}
+
+
+#textAnswer {
+
+  width: 500px;
+
+  padding: 15px;
+
+  margin: 20px;
+
+  font-family: 'Press Start 2P';
+
+}
+
+
+#answers {
+
+  margin-top: 20px;
 
 }
 

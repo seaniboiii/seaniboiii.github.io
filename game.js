@@ -59,6 +59,90 @@ document.querySelectorAll(".character").forEach(char => {
 
 });
 
+document
+  .getElementById("submitText")
+  .addEventListener(
+    "click",
+    gradeWrittenAnswer
+  );
+
+
+async function gradeWrittenAnswer() {
+
+  let studentAnswer =
+    document
+      .getElementById(
+        "textAnswer"
+      )
+      .value;
+
+
+  let q =
+    questions[current];
+
+
+  let response =
+    await fetch(
+
+      "/.netlify/functions/grade",
+
+      {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type":
+            "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+          question: q.text,
+
+          answer: studentAnswer
+
+        })
+
+      }
+
+    );
+
+
+  let data =
+    await response.json();
+
+
+  document
+    .getElementById(
+      "result"
+    )
+    .innerText =
+    data.result;
+
+
+
+  current++;
+
+
+  if (
+    current >= questions.length
+  ) {
+
+    current = 0;
+
+  }
+
+
+  setTimeout(() => {
+
+    loadQuestion();
+
+  }, 2000);
+
+}
+
 
 function startGame() {
 
@@ -139,29 +223,92 @@ function loadQuestion() {
 
   let q = questions[current];
 
+
   document
     .getElementById("enemyName")
-    .innerText = q.enemy;
+    .innerText =
+    q.enemy;
+
 
   document
     .getElementById("quote")
-    .innerText = q.quote;
+    .innerText =
+    q.quote;
+
 
   document
     .getElementById("question")
-    .innerText = q.text;
+    .innerText =
+    q.text;
 
-  document
-    .getElementById("btnA")
-    .innerText = q.choices[0];
 
-  document
-    .getElementById("btnB")
-    .innerText = q.choices[1];
+  let textBox =
+    document.getElementById(
+      "textAnswer"
+    );
 
-  document
-    .getElementById("btnC")
-    .innerText = q.choices[2];
+
+  let submitBtn =
+    document.getElementById(
+      "submitText"
+    );
+
+
+  let answers =
+    document.getElementById(
+      "answers"
+    );
+
+
+  // Written question
+
+  if (q.type === "written") {
+
+    textBox.style.display =
+      "inline-block";
+
+    submitBtn.style.display =
+      "inline-block";
+
+    answers.style.display =
+      "none";
+
+    textBox.value = "";
+
+  }
+
+  // Multiple choice
+
+  else {
+
+    textBox.style.display =
+      "none";
+
+    submitBtn.style.display =
+      "none";
+
+    answers.style.display =
+      "block";
+
+
+    document
+      .getElementById("btnA")
+      .innerText =
+      q.choices[0];
+
+
+    document
+      .getElementById("btnB")
+      .innerText =
+      q.choices[1];
+
+
+    document
+      .getElementById("btnC")
+      .innerText =
+      q.choices[2];
+
+  }
 
 }
 
