@@ -10,7 +10,7 @@ exports.handler = async function(event) {
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemma-4-26b-a4b-it",
       contents: `
         You are grading a middle school connotation/denotation game.
         Quote (if any): ${quote}

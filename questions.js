@@ -609,7 +609,7 @@ const desertQuestions = [
     {
         enemy: "",
         quote: "'Residents fear invasion as thousands cross southern border overnight'",
-        text: "Rewrite this headline to be more neutral and accurate, removing military and fear-based framing.",
+        text: "Rewrite this headline to be more neutral and accurate",
         type: "written",
         explanation: "A neutral headline would focus on facts and numbers without using threat-based language like 'invasion' or 'fear'."
     },

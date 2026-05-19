@@ -68,6 +68,8 @@ window.onload = function () {
     });
   });
 
+  initTextbox();
+
 };
 
 // ---- SHUFFLE ----
@@ -474,4 +476,13 @@ function unlockAnswers() {
 
 function setBackground(bg) {
   document.body.style.backgroundImage = `url("assets/backgrounds/${bg}")`;
+}
+
+function initTextbox() {
+  let box = document.getElementById("textAnswer");
+  box.addEventListener("input", function () {
+    this.style.height = "auto";
+    let maxHeight = window.innerHeight * 0.35;
+    this.style.height = Math.min(this.scrollHeight, maxHeight) + "px";
+  });
 }

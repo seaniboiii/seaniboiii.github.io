@@ -82,10 +82,18 @@ body {
 }
 
 #textAnswer {
-  width: 300px;
+  width: 60%;
+  min-height: 60px;
+  max-height: 35vh;
   padding: 15px;
-  margin: 20px;
+  margin: 20px auto;
+  display: block;
   font-family: 'Press Start 2P';
+  font-size: 10px;
+  line-height: 1.6;
+  resize: none;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 button {
