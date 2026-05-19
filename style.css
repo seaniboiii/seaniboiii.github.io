@@ -1,11 +1,8 @@
 body {
-
   margin: 0;
   padding: 0;
-
   width: 100vw;
   height: 100vh;
-
   overflow: hidden;
 
   background-repeat: no-repeat;
@@ -13,15 +10,12 @@ body {
   background-size: 100% 100%;
 
   font-family: 'Press Start 2P';
-
   color: white;
-
   text-align: center;
 }
 
-
+/* SCREENS */
 #start-screen,
-#how-screen,
 #character-screen {
   display: flex;
   flex-direction: column;
@@ -30,113 +24,214 @@ body {
   height: 100vh;
 }
 
-
+/* BUTTONS */
 #playBtn,
 #howBtn {
   width: 500px;
   cursor: pointer;
 }
 
-
-#backBtn,
+/* NAV BUTTONS */
 #backBtn2,
 #confirm {
   width: 200px;
   cursor: pointer;
-  margin: 15px
+  margin: 15px;
 }
 
-
+/* HOVER EFFECT */
 #playBtn:hover,
 #howBtn:hover,
-#backBtn:hover,
 #backBtn2:hover,
 #confirm:hover,
 .character:hover {
   transform: scale(1.05);
 }
 
-
+/* CHARACTERS */
 #characters {
-
   display: flex;
-
   gap: 40px;
-
 }
-
 
 .character {
-
   padding: 15px;
-
   border: 3px solid white;
-
-  background: rgba(0, 0, 0, .5);
-
+  background: rgba(0,0,0,0.5);
   cursor: pointer;
-
 }
-
 
 .character img {
-
   width: 200px;
-
   image-rendering: pixelated;
-
 }
-
 
 .selected {
-
   border: 3px solid yellow;
-
 }
 
-/* Written answer stuff */
+/* GAME */
+#game {
+  margin-top: 50px;
+}
 
+/* INPUT */
 #textAnswer,
 #submitText {
-
   display: none;
-
 }
-
 
 #textAnswer {
-
-  width: 500px;
-
+  width: 300px;
   padding: 15px;
-
   margin: 20px;
-
   font-family: 'Press Start 2P';
-
 }
-
-
-#answers {
-
-  margin-top: 20px;
-
-}
-
-
-#game {
-
-  margin-top: 50px;
-
-}
-
 
 button {
-
   padding: 15px;
-
   margin: 10px;
-
   font-family: 'Press Start 2P';
+}
 
+/* ANSWERS */
+#answers {
+  margin-top: 20px;
+}
+
+/* POPUP — z-index ensures it always shows on top */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup.hidden {
+  display: none !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-box {
+  background: black;
+  border: 3px solid white;
+  padding: 30px;
+  width: 500px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* PLAYER SPRITE */
+#character-sprite {
+  width: 288px;   /* 48 × 6 */
+  height: 288px;  /* 48 × 6 */
+  background-repeat: no-repeat;
+  background-size: auto 288px; /* scale height, width follows */
+  image-rendering: pixelated;
+  position: fixed;
+  bottom: 100px;
+  left: 2vw;
+}
+
+/*
+@keyframes player-attack {
+  from { background-position: 0px; }
+  to   { background-position: -1728px; } 
+} 
+
+@keyframes player-run {
+  from { background-position: 0px; }
+  to   { background-position: -1728px; } 
+}
+
+/* ENEMY SPRITE */
+#enemy-sprite {
+  width: 432px;   /* 72 × 6 */
+  height: 432px;  /* 72 × 6 */
+  background-repeat: no-repeat;
+  background-size: auto 432px;
+  image-rendering: pixelated;
+  position: fixed;
+  bottom: 120px;
+  right: 2vw;
+}
+
+/* @keyframes enemy-walk {
+  from { background-position: 0px; }
+  to   { background-position: var(--enemy-walk-width); }
+}
+
+@keyframes enemy-hurt {
+  from { background-position: 0px; }
+  to   { background-position: var(--enemy-hurt-width); }
+}
+
+@keyframes enemy-death {
+  from { background-position: 0px; }
+  to   { background-position: var(--enemy-death-width); }
+}
+@keyframes enemy-attack {
+  from { background-position: 0px; }
+  to   { background-position: var(--enemy-attack-width); }
+} */
+
+/* PLAYER KEYFRAMES (Dynamic using CSS variables set by JS) */
+@keyframes player-walk {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--player-walk-width) 0px; }
+}
+
+@keyframes player-attack {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--player-attack-width) 0px; }
+}
+
+@keyframes player-hurt {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--player-hurt-width) 0px; }
+}
+
+@keyframes player-death {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--player-death-width) 0px; }
+}
+
+/* ENEMY KEYFRAMES (Dynamic using CSS variables set by JS) */
+@keyframes enemy-walk {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--enemy-walk-width) 0px; }
+}
+
+@keyframes enemy-attack {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--enemy-attack-width) 0px; }
+}
+
+@keyframes enemy-hurt {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--enemy-hurt-width) 0px; }
+}
+
+@keyframes enemy-death {
+  from { background-position: 0px 0px; }
+  to   { background-position: var(--enemy-death-width) 0px; }
 }
