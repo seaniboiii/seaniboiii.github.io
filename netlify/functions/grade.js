@@ -1,4 +1,4 @@
-const { GoogleGenAI } = require("@google/genai"); 
+const { GoogleGenAI } = require("@google/genai");
 
 exports.handler = async function(event) {
   try {
@@ -6,34 +6,37 @@ exports.handler = async function(event) {
     const quote = body.quote;
     const question = body.question;
     const answer = body.answer;
-    
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }); 
-    
-    // Changing the model identifier connects directly to Gemma 4 MoE
-    const response = await ai.models.generateContent({ 
-      model: "gemma-4-26b-a4b-it", 
+
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
       contents: `
-        You are grading a middle school connotation/denotation game. 
+        You are grading a middle school connotation/denotation game.
         Quote (if any): ${quote}
         Question: ${question}
         Student Answer: ${answer}
-        Decide whether the answer is: CORRECT or INCORRECT
-        Then provide a short explanation.
-        Don't use any markdown language.
-        Don't say the student, talk like you're addressing the student
+        
+        First line must be exactly CORRECT or INCORRECT and nothing else.
+        Second line onwards: a short explanation. No markdown. Address the student directly.
       `
     });
 
+    const text = response.text.trim();
+    const firstLine = text.split("\n")[0].trim().toUpperCase();
+    const explanation = text.split("\n").slice(1).join(" ").trim();
+    const correct = firstLine === "CORRECT";
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ result: response.text })
+      body: JSON.stringify({ correct, result: explanation })
     };
-    
+
   } catch(error) {
     console.log(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ result: "Error grading answer" })
+      body: JSON.stringify({ correct: false, result: "Error grading answer." })
     };
   }
 };
