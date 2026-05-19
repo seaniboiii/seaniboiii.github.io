@@ -544,6 +544,215 @@ const swampQuestions = [
         ],
         correct: 3,
         explanation: "Neutrality is balance; bias is leaning."
+    },
+    {
+        enemy: "",
+        quote: "pro-life vs anti-abortion",
+        text: "Why is the term 'pro-life' considered more rhetorically loaded than 'anti-abortion'?",
+        choices: [
+            "It suggests that religious belief is the only basis for the position",
+            "It frames the issue as a legal question rather than a moral one",
+            "It removes the medical dimension from the political debate entirely",
+            "It implies that those who disagree with the position are opposed to life itself"
+        ],
+        correct: 3,
+        explanation: "'Pro-life' embeds a moral framing that positions the opposition as anti-life, while 'anti-abortion' is descriptive without that implication."
+    },
+
+    {
+        enemy: "",
+        quote: "riot vs unrest vs uprising",
+        text: "What is the most significant effect of a journalist choosing 'unrest' over both 'riot' and 'uprising'?",
+        choices: [
+            "It avoids legal implications that come with labeling events as criminal activity",
+            "It removes individual agency from participants and implies a passive social condition",
+            "It suggests the journalist is sympathetic to the participants' political goals",
+            "It signals that the event involved property destruction rather than political protest"
+        ],
+        correct: 1,
+        explanation: "'Unrest' depersonalizes events, framing them as an ambient social condition rather than deliberate political action or criminality."
+    },
+
+    {
+        enemy: "",
+        quote: "ethnic cleansing vs population transfer",
+        text: "What does the phrase 'population transfer' most significantly obscure compared to 'ethnic cleansing'?",
+        choices: [
+            "It removes the ethnic or racial dimension from the description of the event",
+            "It suggests international legal bodies approved the movement of people",
+            "It frames the event as economically motivated rather than politically motivated",
+            "It implies a voluntary or administrative process rather than forced displacement driven by violence"
+        ],
+        correct: 3,
+        explanation: "'Population transfer' implies a neutral or bureaucratic process, erasing the coercion and violence that defines ethnic cleansing."
+    },
+
+    {
+        enemy: "",
+        quote: "collateral damage vs civilian casualties",
+        text: "Beyond dehumanization, what structural effect does 'collateral damage' have on how an event is interpreted?",
+        choices: [
+            "It implies the military operation was unsuccessful in achieving its primary objective",
+            "It frames harm to civilians as an unintended byproduct of a legitimate operation rather than a central outcome",
+            "It positions the reporting outlet as sympathetic to the military's perspective",
+            "It suggests that civilian deaths were anticipated and accepted before the operation began"
+        ],
+        correct: 1,
+        explanation: "'Collateral damage' embeds the assumption of legitimacy and intent, framing civilian deaths as accidental side effects rather than primary harms."
+    },
+
+    {
+        enemy: "",
+        quote: "enhanced interrogation vs torture",
+        text: "What rhetorical function does the word 'enhanced' perform in 'enhanced interrogation'?",
+        choices: [
+            "It implies that the subject of interrogation provided consent to the process",
+            "It signals to readers that the techniques were legally authorized by a court",
+            "It distances the term from emotional language by using a technical register",
+            "It reframes intensity of harm as a positive improvement on standard practice"
+        ],
+        correct: 3,
+        explanation: "'Enhanced' carries connotations of improvement and advancement, masking the nature of the practices being described."
+    },
+
+    {
+        enemy: "",
+        quote: "freedom fighter vs terrorist vs militant",
+        text: "What does the label 'militant' accomplish that neither 'freedom fighter' nor 'terrorist' does?",
+        choices: [
+            "It implies the individual has received formal military training from a state actor",
+            "It acknowledges the use of force without fully committing to a judgment about legitimacy or morality",
+            "It removes political motivation from the description and focuses purely on behavior",
+            "It suggests the person's actions are legally recognized under international humanitarian law"
+        ],
+        correct: 1,
+        explanation: "'Militant' occupies an ambiguous middle ground, describing armed action without the moral endorsement of 'freedom fighter' or the condemnation of 'terrorist'."
+    },
+
+    {
+        enemy: "",
+        quote: "undocumented vs illegal vs unauthorized",
+        text: "What is the primary distinction between 'unauthorized' and 'undocumented' as descriptors for immigration status?",
+        choices: [
+            "'Unauthorized' foregrounds a lack of government permission while 'undocumented' foregrounds an absence of paperwork",
+            "'Undocumented' implies criminal intent while 'unauthorized' implies administrative oversight",
+            "'Unauthorized' is used exclusively in legal proceedings while 'undocumented' is used in journalism",
+            "'Undocumented' suggests the person has no identity while 'unauthorized' focuses on legal status"
+        ],
+        correct: 0,
+        explanation: "The two words emphasize different dimensions of the same status \u2014 one frames the state's authority, the other frames the individual's documentation."
+    },
+
+    {
+        enemy: "",
+        quote: "global warming vs climate change vs climate crisis",
+        text: "Why did some scientists and journalists shift from 'global warming' to 'climate change' before shifting again to 'climate crisis'?",
+        choices: [
+            "'Global warming' was a media term, 'climate change' was a scientific term, and 'crisis' was introduced by policymakers for legislative purposes",
+            "'Global warming' was politically disputed so 'climate change' was adopted as a neutral compromise before 'crisis' was used for advocacy",
+            "'Global warming' implied only temperature increases, 'climate change' captured broader shifts, and 'crisis' added urgency those terms lacked",
+            "'Climate change' was considered too vague so scientists introduced 'global warming' and advocates later introduced 'crisis' for clarity"
+        ],
+        correct: 2,
+        explanation: "Each shift reflected an attempt to more accurately describe the phenomenon's scope and severity, with 'crisis' adding a call to action the previous terms lacked."
+    },
+
+    {
+        enemy: "",
+        quote: "slave vs enslaved person vs person held in bondage",
+        text: "What does the phrase 'person held in bondage' add beyond what 'enslaved person' already accomplishes?",
+        choices: [
+            "It emphasizes the economic dimensions of the institution more than the personal ones",
+            "It removes the historical specificity that makes 'enslaved' useful in academic contexts",
+            "It makes the physical and legal constraint more explicit while still centering personhood",
+            "It is more commonly accepted in legal contexts than either alternative term"
+        ],
+        correct: 2,
+        explanation: "'Held in bondage' adds visceral specificity about constraint and captivity while maintaining the person-first framing."
+    },
+
+    {
+        enemy: "",
+        quote: "food insecurity vs hunger vs starvation",
+        text: "Why might 'food insecurity' be criticized as a less effective term than 'hunger' in advocacy contexts?",
+        choices: [
+            "It suggests that food supply rather than poverty is the primary cause of the condition",
+            "It is associated with government policy language that many advocacy groups distrust",
+            "It implies the problem is temporary and situational rather than chronic and systemic",
+            "It uses bureaucratic abstraction that distances readers from the physical reality of not having enough food"
+        ],
+        correct: 3,
+        explanation: "'Food insecurity' is clinical and abstract, while 'hunger' is immediate and visceral \u2014 the difference affects how urgently audiences respond."
+    },
+
+    {
+        enemy: "",
+        quote: "ethnic food vs cultural cuisine vs international food",
+        text: "What does the label 'ethnic food' imply about the cuisine and the people who eat it that 'cultural cuisine' does not?",
+        choices: [
+            "It positions the food as belonging to an 'other' group relative to a dominant culture that does not require an ethnic label",
+            "It implies the food is prepared using traditional methods that have not been adapted for modern tastes",
+            "It removes the geographic origin of the food and replaces it with a social category instead",
+            "It suggests the cuisine is less nutritionally sophisticated than foods that do not carry the ethnic label"
+        ],
+        correct: 0,
+        explanation: "'Ethnic' implicitly marks certain foods as foreign relative to an unmarked default culture, while 'cultural cuisine' treats all foods as culturally situated."
+    },
+
+    {
+        enemy: "",
+        quote: "diversity hire vs affirmative action hire vs equity hire",
+        text: "What assumption is embedded in the phrase 'diversity hire' that is not present in 'equity hire'?",
+        choices: [
+            "That the hiring process did not follow standard legal requirements for equal opportunity employment",
+            "That the selected candidate belongs to a group that has historically been overrepresented in the profession",
+            "That the person was selected primarily for demographic representation rather than qualifications or to correct systemic disadvantage",
+            "That the employer was motivated by public relations concerns rather than genuine organizational values"
+        ],
+        correct: 2,
+        explanation: "'Diversity hire' implies the hire was about optics or numbers, while 'equity hire' frames the decision as correcting structural imbalance."
+    },
+
+    {
+        enemy: "",
+        quote: "welfare vs benefits vs public assistance",
+        text: "Why does 'welfare' carry stronger negative connotations than 'public assistance' despite describing similar programs?",
+        choices: [
+            "It is associated exclusively with urban populations while 'public assistance' is used in rural policy contexts",
+            "It refers specifically to cash payments while 'public assistance' includes a broader range of government services",
+            "It has been repeatedly used in political rhetoric to imply dependency and undeservingness in ways 'public assistance' has not",
+            "It suggests recipients have made poor personal choices while 'public assistance' implies systemic failure instead"
+        ],
+        correct: 2,
+        explanation: "Decades of political framing have loaded 'welfare' with implications of dependency and moral failure that 'public assistance' does not carry."
+    },
+
+    {
+        enemy: "",
+        quote: "pro-choice vs pro-abortion vs abortion rights",
+        text: "What is the strongest argument for using 'abortion rights' over 'pro-choice' in journalism?",
+        choices: [
+            "It is more specific about what is being chosen and removes ambiguity about the subject",
+            "It describes the specific legal and political stakes without relying on a framing term created by advocates",
+            "It avoids all association with the political movement that has used the term for decades",
+            "It is more acceptable to readers who oppose abortion access than either alternative term"
+        ],
+        correct: 1,
+        explanation: "'Abortion rights' describes the policy issue directly without adopting the framing language of either side of the debate."
+    },
+
+    {
+        enemy: "",
+        quote: "school choice vs school vouchers vs privatization",
+        text: "What does the phrase 'school choice' obscure that 'school vouchers' makes more explicit?",
+        choices: [
+            "That public funds are being redirected to pay for private or religious school tuition",
+            "That the program requires students to pass entrance exams to access participating schools",
+            "That the policy applies only to families in low-income urban school districts",
+            "That the choice being described is limited to schools within the same geographic district"
+        ],
+        correct: 0,
+        explanation: "'School choice' emphasizes parental agency while 'school vouchers' makes the financial mechanism \u2014 and its implications for public funding \u2014 explicit."
     }
 
 ];
@@ -606,13 +815,13 @@ const desertQuestions = [
         explanation: "'Normal' creates an implied hierarchy of acceptable vs unacceptable bodies or appearances."
     },
 
-    {
-        enemy: "",
-        quote: "'Residents fear invasion as thousands cross southern border overnight'",
-        text: "Rewrite this headline to be more neutral and accurate",
-        type: "written",
-        explanation: "A neutral headline would focus on facts and numbers without using threat-based language like 'invasion' or 'fear'."
-    },
+    // {
+    //     enemy: "",
+    //     quote: "'Residents fear invasion as thousands cross southern border overnight'",
+    //     text: "Rewrite this headline to be more neutral and accurate",
+    //     type: "written",
+    //     explanation: "A neutral headline would focus on facts and numbers without using threat-based language like 'invasion' or 'fear'."
+    // },
 
     {
         enemy: "",
@@ -670,13 +879,13 @@ const desertQuestions = [
         explanation: "The concern is that identity-first labeling can flatten people into one defining condition."
     },
 
-    {
-        enemy: "",
-        quote: "'Critics argue pretext traffic stops disproportionately impact marginalized communities'",
-        text: "Explain why the word 'pretext' changes the meaning of this headline compared to simply saying 'traffic stops'.",
-        type: "written",
-        explanation: "'Pretext' implies the stated reason for the stop may not be the real reason, suggesting hidden motives or bias."
-    },
+    // {
+    //     enemy: "",
+    //     quote: "'Critics argue pretext traffic stops disproportionately impact marginalized communities'",
+    //     text: "Explain why the word 'pretext' changes the meaning of this headline compared to simply saying 'traffic stops'.",
+    //     type: "written",
+    //     explanation: "'Pretext' implies the stated reason for the stop may not be the real reason, suggesting hidden motives or bias."
+    // },
 
     {
         enemy: "",
@@ -734,13 +943,13 @@ const desertQuestions = [
         explanation: "'Paper ceiling' critiques barriers caused by degree requirements and credential systems."
     },
 
-    {
-        enemy: "",
-        quote: "'Scientists warn climate crisis could displace millions over the next century'",
-        text: "Explain the difference in meaning between calling this a 'climate crisis' versus 'climate change'. Which is stronger and why?",
-        type: "written",
-        explanation: "'Crisis' signals urgency and immediate danger while 'change' is more neutral and gradual."
-    },
+    // {
+    //     enemy: "",
+    //     quote: "'Scientists warn climate crisis could displace millions over the next century'",
+    //     text: "Explain the difference in meaning between calling this a 'climate crisis' versus 'climate change'. Which is stronger and why?",
+    //     type: "written",
+    //     explanation: "'Crisis' signals urgency and immediate danger while 'change' is more neutral and gradual."
+    // },
 
     {
         enemy: "",
@@ -798,13 +1007,13 @@ const desertQuestions = [
         explanation: "Algorithms often inherit patterns and biases present in existing human language data."
     },
 
-    {
-        enemy: "",
-        quote: "'Book bans vs content review'",
-        text: "A school board calls its policy 'content review'. A parent group calls it a 'book ban'. Explain why each group chose their label and what each framing implies.",
-        type: "written",
-        explanation: "'Content review' frames the action as responsible oversight, while 'book ban' frames it as censorship."
-    },
+    // {
+    //     enemy: "",
+    //     quote: "'Book bans vs content review'",
+    //     text: "A school board calls its policy 'content review'. A parent group calls it a 'book ban'. Explain why each group chose their label and what each framing implies.",
+    //     type: "written",
+    //     explanation: "'Content review' frames the action as responsible oversight, while 'book ban' frames it as censorship."
+    // },
 
     {
         enemy: "",
@@ -862,13 +1071,13 @@ const desertQuestions = [
         explanation: "'Victim' can imply confirmed harm and criminal responsibility before guilt has been determined."
     },
 
-    {
-        enemy: "",
-        quote: "'Media bias growing'",
-        text: "A news outlet headlines a protest as 'Violent mob storms city streets'. Rewrite this headline to be more neutral while still being accurate.",
-        type: "written",
-        explanation: "A neutral headline would describe what happened factually without loaded words like 'mob' or 'storms'."
-    },
+    // {
+    //     enemy: "",
+    //     quote: "'Media bias growing'",
+    //     text: "A news outlet headlines a protest as 'Violent mob storms city streets'. Rewrite this headline to be more neutral while still being accurate.",
+    //     type: "written",
+    //     explanation: "A neutral headline would describe what happened factually without loaded words like 'mob' or 'storms'."
+    // },
 
     {
         enemy: "",
@@ -925,13 +1134,320 @@ const desertQuestions = [
         correct: 2,
         explanation: "The wording emphasizes systemic inequality developing across generations."
     },
+    {
+        enemy: "",
+        quote: "'Officials describe border situation as a humanitarian concern'",
+        text: "What is the strongest effect of using 'humanitarian concern' rather than 'crisis' or 'emergency' in official language?",
+        choices: [
+            "It signals to international bodies that the government is requesting foreign aid assistance",
+            "It frames the situation as caused by external forces rather than domestic policy decisions",
+            "It acknowledges suffering while minimizing the urgency that would demand immediate policy response",
+            "It positions the government as compassionate without committing to a specific course of action"
+        ],
+        correct: 2,
+        explanation: "'Humanitarian concern' is softer than 'crisis' \u2014 it acknowledges a problem without triggering the political pressure that emergency language would create."
+    },
 
     {
         enemy: "",
-        quote: "'Community advocates urge media outlets to stop referring to unhoused residents as the homeless'",
-        text: "Explain why advocates prefer 'people experiencing homelessness' over 'the homeless'. What does each phrase imply about the person?",
-        type: "written",
-        explanation: "'The homeless' reduces people to a single identity, while 'people experiencing homelessness' treats housing as a circumstance rather than a defining trait."
+        quote: "'Source says leader showed poor judgment'",
+        text: "What does attributing a claim to 'a source' rather than naming the speaker most significantly do to the reader's interpretation?",
+        choices: [
+            "It protects the credibility of the publication by distancing it from an unverified claim",
+            "It signals that the information comes from inside the organization being criticized",
+            "It makes the claim harder to verify while allowing it to shape perception without accountability",
+            "It implies the journalist has multiple sources who all agree on the same interpretation"
+        ],
+        correct: 2,
+        explanation: "Anonymous sourcing creates influence without accountability \u2014 readers cannot evaluate the source's bias, motive, or reliability."
+    },
+
+    {
+        enemy: "",
+        quote: "'Mistakes were made'",
+        text: "What grammatical feature of 'mistakes were made' makes it rhetorically evasive?",
+        choices: [
+            "The past tense creates distance from the event and implies the problem has already been resolved",
+            "The vague noun 'mistakes' avoids specifying what actions were taken or what harm resulted",
+            "The plural form of 'mistakes' implies shared responsibility across multiple parties rather than one individual",
+            "The passive voice removes the subject, eliminating any named actor who is responsible for the mistakes"
+        ],
+        correct: 3,
+        explanation: "Passive voice is the key move \u2014 it describes an outcome without a responsible actor, making accountability structurally impossible from the sentence itself."
+    },
+
+    {
+        enemy: "",
+        quote: "'Officers responded to a call about an armed individual'",
+        text: "What does framing a police shooting story with 'armed individual' in the opening line most significantly do?",
+        choices: [
+            "It provides the legally required context for reporting on incidents involving law enforcement",
+            "It primes readers to view the use of force as potentially justified before the facts are presented",
+            "It removes emotional language and positions the report as neutral and factual from the outset",
+            "It signals that the journalist has confirmed the presence of a weapon through independent sources"
+        ],
+        correct: 1,
+        explanation: "Leading with 'armed' establishes a threat frame before any other context is given, shaping how readers evaluate everything that follows."
+    },
+
+    {
+        enemy: "",
+        quote: "'Critics say the policy has unintended consequences'",
+        text: "What does the phrase 'unintended consequences' do to the political framing of a harmful policy outcome?",
+        choices: [
+            "It positions critics of the policy as overreacting to outcomes that were always part of the plan",
+            "It frames the harm as temporary rather than structural, suggesting it will resolve on its own",
+            "It implies the harm was not foreseeable and therefore removes moral responsibility from policymakers",
+            "It signals that the policy will be revised once the consequences have been fully documented"
+        ],
+        correct: 2,
+        explanation: "'Unintended' carries an implicit defense \u2014 if harm wasn't intended, the argument goes, those who caused it cannot be blamed for it."
+    },
+
+    {
+        enemy: "",
+        quote: "'The city\\'s troubled neighborhood'",
+        text: "What does 'troubled neighborhood' signal to readers that 'low-income neighborhood' or 'disinvested neighborhood' does not?",
+        choices: [
+            "It is a more precise descriptor because it encompasses social, economic, and safety conditions together",
+            "It suggests the area has a history of civil unrest that other descriptors do not capture",
+            "It avoids the economic framing that might lead readers to demand government investment as a solution",
+            "It implies the problem originates within the community rather than from external economic or political forces"
+        ],
+        correct: 3,
+        explanation: "'Troubled' locates the problem inside the neighborhood, while 'disinvested' locates the cause outside it \u2014 in the decisions of banks, governments, and institutions."
+    },
+
+    {
+        enemy: "",
+        quote: "'Senator questions the integrity of the election'",
+        text: "What does 'questions the integrity' allow a headline to imply without directly stating?",
+        choices: [
+            "That other officials share the senator's concern but have not yet spoken publicly about it",
+            "That fraud or misconduct may have occurred, without requiring the publication to verify or endorse the claim",
+            "That the election process failed to meet standards set by independent international observers",
+            "That the senator has legal standing to challenge the results in a court of law"
+        ],
+        correct: 1,
+        explanation: "Framing a claim as a 'question' lets publications amplify allegations without taking responsibility for their truth or falsity."
+    },
+
+    {
+        enemy: "",
+        quote: "'The incident sparked debate'",
+        text: "What does the word 'debate' imply about an event that 'outrage' or 'condemnation' would not?",
+        choices: [
+            "That there are legitimate perspectives on both sides, even when one side may represent a clear ethical violation",
+            "That the public reaction has been measured and intellectual rather than emotional or visceral",
+            "That journalists are uncertain about the facts and are waiting for more information before taking a position",
+            "That the event is ongoing and has not yet produced a clear social or political response"
+        ],
+        correct: 0,
+        explanation: "'Debate' implies two equally valid sides, which can normalize or legitimize positions that most people would reject outright."
+    },
+
+    {
+        enemy: "",
+        quote: "'The program serves at-risk youth'",
+        text: "What does the label 'at-risk' imply about the young people it describes that 'underserved youth' does not?",
+        choices: [
+            "It suggests the young people have already engaged in behaviors that put them in conflict with the law",
+            "It is used exclusively in criminal justice contexts and carries legal definitions that affect how services are delivered",
+            "It implies that intervention is necessary to prevent harm to society rather than to benefit the young people themselves",
+            "It locates risk within the individual or their environment rather than in the systems that have failed to support them"
+        ],
+        correct: 3,
+        explanation: "'At-risk' frames risk as something the youth carry, while 'underserved' frames the problem as a failure of institutions to provide adequate support."
+    },
+
+    {
+        enemy: "",
+        quote: "'The company faced backlash over its diversity statement'",
+        text: "What does 'backlash' imply about the public reaction that 'criticism' or 'opposition' does not?",
+        choices: [
+            "It implies the company's statement was well-intentioned and that the reaction was therefore unfair",
+            "It signals that the reaction was large in scale but not sustained beyond the initial news cycle",
+            "It frames the reaction as excessive or emotionally driven rather than principled or reasoned",
+            "It suggests the reaction came primarily from people outside the company rather than employees"
+        ],
+        correct: 2,
+        explanation: "'Backlash' carries a connotation of overreaction, subtly delegitimizing the response even before its content is examined."
+    },
+
+    {
+        enemy: "",
+        quote: "'Lawmakers clash over spending bill'",
+        text: "What does the word 'clash' imply about a legislative disagreement that 'debate' or 'negotiate' does not?",
+        choices: [
+            "It implies that neither side is willing to compromise and that the bill is unlikely to pass as written",
+            "It suggests that the disagreement has become personal rather than remaining focused on policy differences",
+            "It signals that the disagreement has spilled outside the legislative chamber into public confrontation",
+            "It frames political disagreement as conflict and opposition rather than as a functional part of democratic deliberation"
+        ],
+        correct: 3,
+        explanation: "'Clash' uses combat language that frames politics as warfare, which can reduce public trust in institutions and normalize dysfunction."
+    },
+
+    {
+        enemy: "",
+        quote: "'Experts are divided on the issue'",
+        text: "What is the strongest critique of using 'experts are divided' in coverage of a scientific issue?",
+        choices: [
+            "It removes the journalist's ability to explain why certain expert opinions carry more evidential weight than others",
+            "It can create a false impression of equal disagreement when one position is actually held by a strong majority of specialists",
+            "It implies that non-expert public opinion is as valid as the positions held by credentialed researchers",
+            "It is used to avoid taking a position on a politically contentious issue without examining the actual evidence"
+        ],
+        correct: 1,
+        explanation: "False balance \u2014 presenting fringe dissent as equivalent to scientific consensus \u2014 is one of the most significant failures of 'both sides' journalism."
+    },
+
+    {
+        enemy: "",
+        quote: "'The suspect was confrontational with officers'",
+        text: "What does 'confrontational' do in a police incident report that 'uncooperative' or 'frightened' would not?",
+        choices: [
+            "It implies the subject initiated or escalated conflict, which can frame subsequent use of force as a response rather than an initiation",
+            "It removes emotional context from the encounter and presents the subject's behavior as a deliberate choice",
+            "It signals to readers that the officers involved exercised appropriate restraint given the level of threat",
+            "It provides a legally precise description of behavior that can be used to justify specific law enforcement responses"
+        ],
+        correct: 0,
+        explanation: "'Confrontational' assigns agency and aggression to the subject, framing the encounter in a way that preemptively justifies officer response."
+    },
+
+    {
+        enemy: "",
+        quote: "'The school board voted to restrict access to certain materials'",
+        text: "What is the most significant framing difference between 'restrict access' and 'ban' in coverage of book removal policies?",
+        choices: [
+            "'Restrict access' is used by opponents of the policy while 'ban' is preferred by supporters as a neutral descriptor",
+            "'Restrict access' implies a partial or procedural limitation while 'ban' implies a total and ideologically motivated prohibition",
+            "'Ban' is legally precise while 'restrict access' is used when the policy has not yet been formally voted on",
+            "'Ban' implies the materials were harmful while 'restrict access' implies the decision was made for logistical reasons"
+        ],
+        correct: 1,
+        explanation: "The word 'ban' carries connotations of censorship and ideological control that 'restrict access' softens into a bureaucratic procedure."
+    },
+
+    {
+        enemy: "",
+        quote: "'The neighborhood has seen an uptick in criminal activity'",
+        text: "What does the phrase 'uptick in criminal activity' obscure compared to reporting specific crime statistics?",
+        choices: [
+            "It creates an impression of widespread disorder without specifying what crimes occurred, how many, or compared to what baseline",
+            "It implies the increase is temporary and likely to reverse without requiring any policy intervention",
+            "It suggests the crimes are connected to each other rather than being isolated incidents in the same area",
+            "It removes the racial and economic dimensions of crime reporting that specific statistics would make visible"
+        ],
+        correct: 0,
+        explanation: "Vague language like 'uptick' allows crime narratives to circulate without the accountability that specific, contextualized data would require."
+    },
+
+    {
+        enemy: "",
+        quote: "'The politician made controversial remarks'",
+        text: "What does describing remarks as 'controversial' do that 'offensive' or 'false' would not?",
+        choices: [
+            "It implies the remarks were deliberately designed to provoke a reaction rather than to communicate a position",
+            "It signals that the journalist personally disagrees with the remarks but cannot verify their inaccuracy",
+            "It frames the problem as one of public reception rather than of the content or accuracy of what was said",
+            "It protects the publication from legal liability by avoiding a direct claim about truth or harm"
+        ],
+        correct: 2,
+        explanation: "'Controversial' locates the problem in how people feel about the remarks rather than in what the remarks actually said or whether they were true."
+    },
+
+    {
+        enemy: "",
+        quote: "'The administration\\'s messaging on the issue has been unclear'",
+        text: "What does 'unclear messaging' imply about a policy failure that 'deception' or 'contradiction' does not?",
+        choices: [
+            "It implies that the administration lacks the technical capacity to communicate complex policies effectively",
+            "It frames the audience as the source of confusion rather than the administration as the source of the problem",
+            "It signals that the journalist was unable to obtain comment from the administration before publication",
+            "It suggests the problem is one of communication rather than of intention or integrity, softening the severity of the failure"
+        ],
+        correct: 3,
+        explanation: "'Unclear messaging' frames a potential lie or contradiction as a PR problem, which reduces accountability significantly."
+    },
+
+    {
+        enemy: "",
+        quote: "'The organization faces scrutiny over its practices'",
+        text: "What does 'faces scrutiny' imply that 'is under investigation' or 'is accused of wrongdoing' does not?",
+        choices: [
+            "It implies the organization is cooperating with whatever process is examining its practices",
+            "It suggests the scrutiny is likely to result in changes to the organization's leadership structure",
+            "It acknowledges attention without implying guilt or confirmed wrongdoing, protecting the publication from making unverified claims",
+            "It signals that the scrutiny is coming from within the organization rather than from an external body"
+        ],
+        correct: 2,
+        explanation: "'Faces scrutiny' is deliberately vague \u2014 it gestures at a problem without specifying its nature, source, or severity."
+    },
+
+    {
+        enemy: "",
+        quote: "'The data suggests a correlation between poverty and crime'",
+        text: "What is the strongest problem with reporting a correlation between poverty and crime without further context?",
+        choices: [
+            "It can imply a causal relationship that the data does not establish, reinforcing stereotypes about poor communities",
+            "It implies that crime rates are higher in poor communities than data from comparable wealthy communities would show",
+            "It removes the distinction between violent crime and property crime that is essential for accurate interpretation",
+            "It suggests that poverty is the only variable worth examining when multiple systemic factors may be involved"
+        ],
+        correct: 0,
+        explanation: "Correlation does not imply causation, and presenting this data without context can naturalize poverty as a predictor of criminality rather than examining shared causes."
+    },
+
+    {
+        enemy: "",
+        quote: "'Some say the policy is discriminatory'",
+        text: "What is the rhetorical effect of 'some say' as an attribution device in journalism?",
+        choices: [
+            "It implies the journalist personally disagrees with the claim but is obligated to present it for balance",
+            "It protects the publication legally by attributing the claim to unnamed parties rather than stating it directly",
+            "It signals that the claim represents a minority viewpoint that has not gained mainstream acceptance",
+            "It allows a publication to introduce a claim into coverage without evaluating its accuracy or identifying who is making it"
+        ],
+        correct: 3,
+        explanation: "'Some say' is a journalistic hedge that circulates claims \u2014 including false ones \u2014 while insulating the publication from accountability for their truth."
+    },
+
+    {
+        enemy: "",
+        quote: "'The report raises questions about leadership'",
+        text: "What does 'raises questions' accomplish in a headline that 'reveals wrongdoing' or 'documents failure' would not?",
+        choices: [
+            "It introduces the possibility of wrongdoing while committing to nothing, allowing the headline to generate concern without making a verifiable claim",
+            "It implies the leadership being examined is cooperating with the report rather than being accused by it",
+            "It signals to readers that the report is preliminary and that further investigation is needed before conclusions can be drawn",
+            "It protects the publication from defamation liability by framing the content as interrogative rather than declarative"
+        ],
+        correct: 0,
+        explanation: "'Raises questions' is a headline construction that does the work of an accusation while maintaining the appearance of neutrality and avoiding factual commitment."
+    },
+
+    {
+        enemy: "",
+        quote: "'The community is resilient'",
+        text: "What is the strongest critique of describing a community that has experienced harm or disaster as 'resilient'?",
+        choices: [
+            "It suggests that the community does not need long-term investment because it has demonstrated the ability to recover on its own",
+            "It can shift focus from the systems that caused harm to the community's capacity to absorb it, reducing pressure for structural change",
+            "It implies that the community has experienced hardship before and is therefore accustomed to managing without external support",
+            "It removes the political dimension of the harm by framing the community's response as an emotional or cultural characteristic"
+        ],
+        correct: 1,
+        explanation: "'Resilient' is often used in ways that celebrate communities for surviving harm rather than demanding accountability from those who caused it."
     }
+
+    // {
+    //     enemy: "",
+    //     quote: "'Community advocates urge media outlets to stop referring to unhoused residents as the homeless'",
+    //     text: "Explain why advocates prefer 'people experiencing homelessness' over 'the homeless'. What does each phrase imply about the person?",
+    //     type: "written",
+    //     explanation: "'The homeless' reduces people to a single identity, while 'people experiencing homelessness' treats housing as a circumstance rather than a defining trait."
+    // }
 
 ];
