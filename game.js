@@ -209,6 +209,7 @@ async function gradeWrittenAnswer() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       question: q.text,
+      quote: q.quote,
       answer: studentAnswer
     })
   });

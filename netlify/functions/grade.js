@@ -3,6 +3,7 @@ const { GoogleGenAI } = require("@google/genai");
 exports.handler = async function(event) {
   try {
     const body = JSON.parse(event.body);
+    const quote = body.quote;
     const question = body.question;
     const answer = body.answer;
     
@@ -12,12 +13,14 @@ exports.handler = async function(event) {
     const response = await ai.models.generateContent({ 
       model: "gemma-4-26b-a4b-it", 
       contents: `
-        You are grading a middle school connotation/denotation game.
+        You are grading a middle school connotation/denotation game. 
+        Quote (if any): ${quote}
         Question: ${question}
         Student Answer: ${answer}
         Decide whether the answer is: CORRECT or INCORRECT
         Then provide a short explanation.
         Don't use any markdown language.
+        Don't say the student, talk like you're addressing the student
       `
     });
 
