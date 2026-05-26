@@ -2,6 +2,13 @@
 let playerHP = 100;
 let enemyHP = 100;
 
+
+// ---- SURVEY ----
+let preScores = {};
+let postScores = {};
+let surveyCurrentQ = 0;
+let surveyMode = "pre"; // "pre" or "post"
+
 // ---- CHARACTER ----
 let selectedCharacter = null;
 
@@ -12,19 +19,23 @@ let currentQuestion = null;
 // ---- ENEMIES ----
 let enemyPool = {
   swamp: [
-    { name: "Centipede",     sprite: "Centipede",     attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
+    { name: "Centipede", sprite: "Centipede", attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
     { name: "Battle_turtle", sprite: "Battle_turtle", attackFrames: 4, hurtFrames: 2, deathFrames: 4 },
-    { name: "Big_bloated",   sprite: "Big_bloated",   attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
+    { name: "Big_bloated", sprite: "Big_bloated", attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
   ],
   desert: [
     { name: "Deceased", sprite: "Deceased", attackFrames: 4, hurtFrames: 2, deathFrames: 6 },
-    { name: "Hyena",    sprite: "Hyena",    attackFrames: 6, hurtFrames: 2, deathFrames: 6 },
-    { name: "Mummy",    sprite: "Mummy",    attackFrames: 6, hurtFrames: 2, deathFrames: 6 },
-    { name: "Scorpio",  sprite: "Scorpio",  attackFrames: 4, hurtFrames: 2, deathFrames: 4 },
-    { name: "Snake",    sprite: "Snake",    attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
-    { name: "Vulture",  sprite: "Vulture",  attackFrames: 4, hurtFrames: 2, deathFrames: 4 },
+    { name: "Hyena", sprite: "Hyena", attackFrames: 6, hurtFrames: 2, deathFrames: 6 },
+    { name: "Mummy", sprite: "Mummy", attackFrames: 6, hurtFrames: 2, deathFrames: 6 },
+    { name: "Scorpio", sprite: "Scorpio", attackFrames: 4, hurtFrames: 2, deathFrames: 4 },
+    { name: "Snake", sprite: "Snake", attackFrames: 6, hurtFrames: 2, deathFrames: 4 },
+    { name: "Vulture", sprite: "Vulture", attackFrames: 4, hurtFrames: 2, deathFrames: 4 },
   ],
-  forest: []
+  forest: [
+    { name: "1", sprite: "1", attackFrames: 6, hurtFrames: 4, deathFrames: 6 },
+    { name: "2", sprite: "2", attackFrames: 6, hurtFrames: 4, deathFrames: 6 },
+    { name: "3", sprite: "3", attackFrames: 6, hurtFrames: 4, deathFrames: 6 }
+  ]
 };
 
 let enemySequence = [];
@@ -32,17 +43,17 @@ let currentEnemyIndex = 0;
 
 // ---- PLAYERS ----
 let players = {
-  Woodcutter:  { attackFrames: 6, hurtFrames: 3, deathFrames: 6 },
+  Woodcutter: { attackFrames: 6, hurtFrames: 3, deathFrames: 6 },
   GraveRobber: { attackFrames: 6, hurtFrames: 3, deathFrames: 6 },
-  SteamMan:    { attackFrames: 6, hurtFrames: 3, deathFrames: 6 },
+  SteamMan: { attackFrames: 6, hurtFrames: 3, deathFrames: 6 },
 };
 
 // ---- BIOMES ----
 let currentBiomeIndex = 0;
 let biomes = [
-  { name: "swamp",  background: "swamp.png",  enemyFrameSize: 72, enemies: enemyPool.swamp  },
+  { name: "swamp", background: "swamp.png", enemyFrameSize: 72, enemies: enemyPool.swamp },
   { name: "desert", background: "desert.png", enemyFrameSize: 48, enemies: enemyPool.desert },
-  { name: "forest", background: "forest.png", enemyFrameSize: 0,  enemies: enemyPool.forest },
+  { name: "forest", background: "forest.png", enemyFrameSize: 96, enemies: enemyPool.forest }, // enemyFrameSize to be filled when forest enemies are added
 ];
 
 // ---- INIT ----
@@ -95,12 +106,12 @@ function getCurrentEnemy() {
 // ---- DECK ----
 function refillDeck() {
   let enemy = getCurrentEnemy();
-  let allQuestions = currentBiomeIndex === 0 ? swampQuestions : desertQuestions;
-  let pool = allQuestions.filter(q => q.enemy === enemy.name);
+  let allQuestions = currentBiomeIndex === 0 ? swampQuestions : currentBiomeIndex === 1 ? desertQuestions : forestQuestions;
+  let pool = allQuestions.filter(q => q.enemy === enemy.name && q.type !== "written");
 
   if (pool.length === 0) {
     console.warn("No questions found for: " + enemy.name + ". Using all questions.");
-    pool = [...allQuestions];
+    pool = allQuestions.filter(q => q.type !== "written");
   }
 
   questionDeck = [...pool];
@@ -308,7 +319,10 @@ function gameOver() {
 
 // ---- GAME WIN ----
 function gameWin() {
-  document.getElementById("win-popup").classList.remove("hidden");
+  // Show post-survey before win popup
+  surveyMode = "post";
+  surveyCurrentQ = 0;
+  showSurvey();
 }
 
 // ---- TRY AGAIN ----
@@ -328,6 +342,10 @@ function tryAgain() {
   currentBiomeIndex = 0;
   questionDeck = [];
   currentQuestion = null;
+  preScores = {};
+  postScores = {};
+  surveyCurrentQ = 0;
+  surveyMode = "pre";
 
   // clear selected character highlight
   document.querySelectorAll(".character").forEach(c => c.classList.remove("selected"));
@@ -388,22 +406,31 @@ function setEnemyAnimation(type) {
   setTimeout(() => {
     sprite.style.backgroundSize = `auto ${scaledSize}px`;
 
-    if (type === "static") {
-      sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/${enemy.sprite}.png')`;
-    } else if (type === "attack") {
-      sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/attack.png')`;
-      sprite.style.setProperty("--enemy-attack-width", `-${enemy.attackFrames * scaledSize}px`);
-      sprite.style.animation = `enemy-attack 0.6s steps(${enemy.attackFrames}) 1 forwards`;
-    } else if (type === "hurt") {
-      sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/hurt.png')`;
-      sprite.style.setProperty("--enemy-hurt-width", `-${enemy.hurtFrames * scaledSize}px`);
-      sprite.style.animation = `enemy-hurt 0.4s steps(${enemy.hurtFrames}) 1 forwards`;
-    } else if (type === "death") {
-      sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/death.png')`;
-      sprite.style.setProperty("--enemy-death-width", `-${enemy.deathFrames * scaledSize}px`);
-      sprite.style.animation = `enemy-death 0.8s steps(${enemy.deathFrames}) 1 forwards`;
+    if (type === "static") {{
+      if (biome === "forest") {
+        sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/idle.png')`;
+        sprite.style.backgroundSize = `auto ${scaledSize}px`;
+        sprite.style.backgroundPosition = "0px 0px";
+      } else {
+        sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/${enemy.sprite}.png')`;
+        sprite.style.backgroundSize = `auto ${scaledSize}px`;
+        sprite.style.backgroundPosition = "0px 0px";
+      }
     }
-  }, 10);
+  } else if (type === "attack") {
+    sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/attack.png')`;
+    sprite.style.setProperty("--enemy-attack-width", `-${enemy.attackFrames * scaledSize}px`);
+    sprite.style.animation = `enemy-attack 0.6s steps(${enemy.attackFrames}) 1 forwards`;
+  } else if (type === "hurt") {
+    sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/hurt.png')`;
+    sprite.style.setProperty("--enemy-hurt-width", `-${enemy.hurtFrames * scaledSize}px`);
+    sprite.style.animation = `enemy-hurt 0.4s steps(${enemy.hurtFrames}) 1 forwards`;
+  } else if (type === "death") {
+    sprite.style.backgroundImage = `url('assets/enemies/${biome}/${enemy.sprite}/death.png')`;
+    sprite.style.setProperty("--enemy-death-width", `-${enemy.deathFrames * scaledSize}px`);
+    sprite.style.animation = `enemy-death 0.8s steps(${enemy.deathFrames}) 1 forwards`;
+  }
+}, 10);
 }
 
 // ---- LOAD ENEMY SPRITE ----
@@ -411,7 +438,7 @@ function loadEnemySprite() {
   let frameSize = biomes[currentBiomeIndex].enemyFrameSize;
   let scaledSize = frameSize * 6;
   let sprite = document.getElementById("enemy-sprite");
-  sprite.style.width  = scaledSize + "px";
+  sprite.style.width = scaledSize + "px";
   sprite.style.height = scaledSize + "px";
   setEnemyAnimation("static");
 }
@@ -446,15 +473,13 @@ function confirm() {
   enemyHP = 100;
   updateHP();
 
-  setTimeout(() => {
-    setBackground("swamp.png");
-    document.getElementById("character-screen").style.display = "none";
-    document.getElementById("game").style.display = "block";
-    setPlayerAnimation("static");
-    loadEnemySprite();
-    refillDeck();
-    loadQuestion();
-  }, 100);
+  // Show pre-survey before starting the game
+  document.getElementById("character-screen").style.display = "none";
+  preScores = {};
+  postScores = {};
+  surveyMode = "pre";
+  surveyCurrentQ = 0;
+  showSurvey();
 }
 
 // ---- LOCK / UNLOCK ANSWERS ----
@@ -472,6 +497,101 @@ function unlockAnswers() {
   document.getElementById("btnC").disabled = false;
   document.getElementById("btnD").disabled = false;
   document.getElementById("submitText").disabled = false;
+}
+
+
+// ---- SURVEY ----
+function showSurvey() {
+  let q = surveyQuestions[surveyCurrentQ];
+  let popup = document.getElementById("survey-popup");
+  let label = surveyMode === "pre" ? "pre" : "post";
+
+  document.getElementById("survey-title").innerText =
+    surveyMode === "pre"
+      ? "Before You Play — Quick Check In"
+      : "After the Game — Quick Check In";
+
+  document.getElementById("survey-progress").innerText =
+    "Question " + (surveyCurrentQ + 1) + " of " + surveyQuestions.length;
+
+  document.getElementById("survey-question").innerText = q.text;
+
+  let btnContainer = document.getElementById("survey-buttons");
+  btnContainer.innerHTML = "";
+
+  q.scale.forEach((label, i) => {
+    let btn = document.createElement("button");
+    btn.innerText = label;
+    btn.classList.add("survey-btn");
+    btn.addEventListener("click", () => selectSurveyAnswer(i + 1, btn));
+    btnContainer.appendChild(btn);
+  });
+
+  document.getElementById("survey-next").disabled = true;
+  popup.classList.remove("hidden");
+}
+
+function selectSurveyAnswer(value, clickedBtn) {
+  // highlight selected
+  document.querySelectorAll(".survey-btn").forEach(b => b.classList.remove("selected"));
+  clickedBtn.classList.add("selected");
+
+  let q = surveyQuestions[surveyCurrentQ];
+  if (surveyMode === "pre") {
+    preScores[q.id] = value;
+  } else {
+    postScores[q.id] = value;
+  }
+
+  document.getElementById("survey-next").disabled = false;
+}
+
+function surveyNext() {
+  surveyCurrentQ++;
+
+  if (surveyCurrentQ < surveyQuestions.length) {
+    showSurvey();
+  } else {
+    document.getElementById("survey-popup").classList.add("hidden");
+
+    if (surveyMode === "pre") {
+      // start the game
+      setBackground("swamp.png");
+      document.getElementById("game").style.display = "block";
+      setPlayerAnimation("static");
+      loadEnemySprite();
+      refillDeck();
+      loadQuestion();
+    } else {
+      // show results then win popup
+      showSurveyResults();
+    }
+  }
+}
+
+function showSurveyResults() {
+  let resultsPopup = document.getElementById("survey-results-popup");
+
+  let html = "";
+  surveyQuestions.forEach(q => {
+    let pre = preScores[q.id] || "—";
+    let post = postScores[q.id] || "—";
+    let diff = (typeof pre === "number" && typeof post === "number") ? post - pre : null;
+    let arrow = diff === null ? "" : diff > 0 ? " ▲ +" + diff : diff < 0 ? " ▼ " + diff : " — no change";
+    let color = diff > 0 ? "style='color:#7fff7f'" : diff < 0 ? "style='color:#ff7f7f'" : "";
+
+    html += `<p><strong>${q.text}</strong><br>`;
+    html += `Before: <strong>${pre}/5</strong> &nbsp;→&nbsp; After: <strong>${post}/5</strong>`;
+    html += `<span ${color}>${arrow}</span></p>`;
+  });
+
+  document.getElementById("survey-results-text").innerHTML = html;
+  resultsPopup.classList.remove("hidden");
+}
+
+function closeSurveyResults() {
+  document.getElementById("survey-results-popup").classList.add("hidden");
+  document.getElementById("win-popup").classList.remove("hidden");
 }
 
 function setBackground(bg) {

@@ -114,6 +114,28 @@
     </div>
   </div>
 
+
+  <!-- SURVEY POPUP -->
+  <div id="survey-popup" class="popup hidden">
+    <div class="popup-box survey-box">
+      <h2 id="survey-title">Quick Check In</h2>
+      <p id="survey-progress" class="survey-progress"></p>
+      <p id="survey-question" class="survey-question"></p>
+      <div id="survey-buttons" class="survey-buttons"></div>
+      <button id="survey-next" onclick="surveyNext()" disabled>NEXT →</button>
+    </div>
+  </div>
+
+  <!-- SURVEY RESULTS POPUP -->
+  <div id="survey-results-popup" class="popup hidden">
+    <div class="popup-box survey-box">
+      <h2>YOUR GROWTH</h2>
+      <p style="font-size:9px; margin-bottom: 20px;">Here is how your thinking changed before and after the game:</p>
+      <div id="survey-results-text" class="survey-results-text"></div>
+      <button onclick="closeSurveyResults()">SEE RESULTS →</button>
+    </div>
+  </div>
+
   <script src="questions.js"></script>
   <script src="game.js"></script>
 
